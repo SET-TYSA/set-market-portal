@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SET Market — Market Prices</title>
+<title>SET Market — SET Price Terminal</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -95,12 +95,6 @@
     transition: all 0.2s;
   }
   .admin-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-  .lang-switcher { display:flex; gap:2px; border:1px solid var(--border2); border-radius:3px; overflow:hidden; }
-  .lang-btn { font-family:var(--mono); font-size:10px; background:transparent; border:none; color:var(--muted); padding:5px 9px; cursor:pointer; transition:all 0.15s; letter-spacing:0.05em; }
-  .lang-btn:not(:last-child) { border-right:1px solid var(--border2); }
-  .lang-btn:hover { color:var(--accent); background:rgba(122,173,88,0.08); }
-  .lang-btn.active { color:var(--accent2); background:rgba(122,173,88,0.12); font-weight:500; }
 
   /* TICKER */
   .ticker-wrap {
@@ -746,13 +740,8 @@
 <header>
   <div class="logo">SET <span>Market</span> — Terminal</div>
   <div class="header-meta">
-    <span><span class="live-dot"></span><span data-i18n="updated">Precios actualizados</span></span>
+    <span><span class="live-dot"></span>Precios actualizados</span>
     <span id="update-date">—</span>
-    <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('es',this)">ES</button>
-      <button class="lang-btn" onclick="setLang('en',this)">EN</button>
-      <button class="lang-btn" onclick="setLang('pt',this)">PT</button>
-    </div>
     <button class="admin-btn" onclick="openAdmin()">⚙ Admin</button>
   </div>
 </header>
@@ -765,34 +754,34 @@
 <!-- HERO -->
 <div class="hero">
   <div>
-    <div class="hero-eyebrow" data-i18n="eyebrow">Commodities Alimentarios · Global</div>
-    <h1 data-i18n="hero-title">Precios<br><em>en línea</em></h1>
-    <p class="hero-sub" data-i18n="hero-sub">Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para cotización firme con documentación completa.</p>
+    <div class="hero-eyebrow">Commodities Alimentarios · Global</div>
+    <h1>SET Price<br><em>Terminal</em></h1>
+    <p class="hero-sub">Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para cotización firme con documentación completa.</p>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
       <span class="stat-num" id="total-products">—</span>
-      <span class="stat-label" data-i18n="stat-products">Productos</span>
+      <span class="stat-label">Productos</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">40+</span>
-      <span class="stat-label" data-i18n="stat-countries">Países</span>
+      <span class="stat-label">Países</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">120K</span>
-      <span class="stat-label" data-i18n="stat-volume">MT / año</span>
+      <span class="stat-label">MT / año</span>
     </div>
   </div>
 </div>
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
-  <span class="filter-label" data-i18n="filter-label">Filtrar:</span>
-  <button class="filter-btn active" onclick="filterCards('all', this)" data-i18n="filter-all">Todos</button>
-  <button class="filter-btn" onclick="filterCards('aceites', this)" data-i18n="filter-oils">Aceites</button>
-  <button class="filter-btn" onclick="filterCards('marino', this)" data-i18n="filter-marine">Marino</button>
-  <button class="filter-btn" onclick="filterCards('proteinas', this)" data-i18n="filter-proteins">Proteínas</button>
-  <button class="filter-btn" onclick="filterCards('agricola', this)" data-i18n="filter-agri">Agrícola</button>
+  <span class="filter-label">Filtrar:</span>
+  <button class="filter-btn active" onclick="filterCards('all', this)">Todos</button>
+  <button class="filter-btn" onclick="filterCards('aceites', this)">Aceites</button>
+  <button class="filter-btn" onclick="filterCards('marino', this)">Marino</button>
+  <button class="filter-btn" onclick="filterCards('proteinas', this)">Proteínas</button>
+  <button class="filter-btn" onclick="filterCards('agricola', this)">Agrícola</button>
 </div>
 
 <!-- PRICE GRID -->
@@ -802,8 +791,8 @@
 <!-- CONTACT SECTION -->
 <div class="contact-section">
   <div class="contact-left">
-    <h2 data-i18n="contact-title">¿Necesitas una<br><em>cotización firme?</em></h2>
-    <p data-i18n="contact-desc">Nuestro equipo de trading responde en menos de 24 horas hábiles con precio firme, documentación técnica y coordinación logística completa.</p>
+    <h2>¿Necesitas una<br><em>cotización firme?</em></h2>
+    <p>Nuestro equipo de trading responde en menos de 4 horas hábiles con precio firme, documentación técnica y coordinación logística completa.</p>
     <div class="contact-info">
       <div class="contact-row">
         <div class="contact-icon">✉</div>
@@ -815,7 +804,7 @@
       </div>
       <div class="contact-row">
         <div class="contact-icon">🕐</div>
-        <span data-i18n="contact-response">Respuesta en &lt; 4 horas hábiles</span>
+        <span>Respuesta en &lt; 4 horas hábiles</span>
       </div>
     </div>
   </div>
@@ -823,40 +812,40 @@
     <form class="contact-form" onsubmit="submitForm(event)">
       <div class="form-row">
         <div class="form-group">
-          <label data-i18n="form-company">Empresa *</label>
-          <input type="text" data-i18n-placeholder="ph-company" placeholder="Nombre de empresa" required>
+          <label>Empresa *</label>
+          <input type="text" placeholder="Nombre de empresa" required>
         </div>
         <div class="form-group">
-          <label data-i18n="form-email">Email *</label>
+          <label>Email *</label>
           <input type="email" placeholder="trading@empresa.com" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label data-i18n="form-product">Producto de interés</label>
+          <label>Producto de interés</label>
           <select id="contact-product">
-            <option value="" data-i18n="form-select">Seleccionar...</option>
+            <option value="">Seleccionar...</option>
           </select>
         </div>
         <div class="form-group">
-          <label data-i18n="form-volume">Volumen estimado</label>
-          <input type="text" data-i18n-placeholder="ph-volume" placeholder="Ej: 25 MT">
+          <label>Volumen estimado</label>
+          <input type="text" placeholder="Ej: 25 MT">
         </div>
       </div>
       <div class="form-group">
-        <label data-i18n="form-message">Mensaje / Requerimientos</label>
-        <textarea data-i18n-placeholder="ph-message" placeholder="Origen preferido, destino, incoterm, fecha estimada de entrega..."></textarea>
+        <label>Mensaje / Requerimientos</label>
+        <textarea placeholder="Origen preferido, destino, incoterm, fecha estimada de entrega..."></textarea>
       </div>
-      <button type="submit" class="submit-btn" data-i18n="form-submit">Enviar consulta →</button>
-      <p class="form-note" id="form-msg" style="display:none; color: var(--up);" data-i18n="form-sent">✓ Mensaje enviado. Te contactamos en menos de 4 horas hábiles.</p>
-      <p class="form-note" data-i18n="form-privacy">Información confidencial. No compartimos datos con terceros.</p>
+      <button type="submit" class="submit-btn">Enviar consulta →</button>
+      <p class="form-note" id="form-msg" style="display:none; color: var(--up);">✓ Mensaje enviado. Te contactamos en menos de 4 horas hábiles.</p>
+      <p class="form-note">Información confidencial. No compartimos datos con terceros.</p>
     </form>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div data-i18n="footer-copy">© 2026 SET Market Terminal. Precios indicativos, sujetos a condiciones de mercado.</div>
+  <div>© 2026 SET Market Terminal. Precios indicativos, sujetos a condiciones de mercado.</div>
   <div id="footer-date"></div>
 </footer>
 
@@ -898,112 +887,19 @@ const DEFAULT_PRODUCTS = [
   { id: 1, sym: 'EVOO-CHL', name: 'Extra Virgin Olive Oil', origin: 'Chile', category: 'aceites', min: 3.60, max: 3.95, unit: '/kg', incoterm: 'FOB', moq: '5 MT', status: 'high', trend: '+1.4', packaging: '200L Drums / IBC' },
   { id: 2, sym: 'EVOO-ESP', name: 'Extra Virgin Olive Oil', origin: 'España', category: 'aceites', min: 3.80, max: 4.20, unit: '/kg', incoterm: 'FOB', moq: '10 MT', status: 'tight', trend: '+0.8', packaging: '200L Drums / Flexi' },
   { id: 3, sym: 'OPOM-OIL', name: 'Olive Pomace Oil', origin: 'España / Túnez', category: 'aceites', min: 2.30, max: 2.60, unit: '/kg', incoterm: 'FOB', moq: '20 MT', status: 'stable', trend: '-0.4', packaging: '200L Drums / Flexi' },
-  { id: 4, sym: 'FMEAL-65', name: 'Salmon Meal 65% Protein', origin: 'Perú', category: 'marino', min: 1450, max: 1520, unit: '/MT', incoterm: 'CIF', moq: '25 MT', status: 'tight', trend: '-0.6', packaging: '50kg PP Bags / Bulk' },
+  { id: 4, sym: 'SMEAL-65', name: 'Salmon Meal 65% Protein', origin: 'Chile / Noruega', category: 'marino', min: 1580, max: 1680, unit: '/MT', incoterm: 'CIF', moq: '25 MT', status: 'tight', trend: '+1.8', packaging: '50kg PP Bags / Bulk' },
   { id: 5, sym: 'SALM-OIL', name: 'Salmon Oil', origin: 'Chile / Noruega', category: 'marino', min: 2.05, max: 2.25, unit: '/kg', incoterm: 'FOB', moq: '5 MT', status: 'high', trend: '+2.1', packaging: '200L Drums / IBCs' },
   { id: 6, sym: 'FISH-OM3', name: 'Fish Oil Omega-3', origin: 'Perú / Chile', category: 'marino', min: 1.85, max: 2.05, unit: '/kg', incoterm: 'FOB', moq: '10 MT', status: 'available', trend: '+0.3', packaging: 'IBCs 1,000L / Flexi' },
+  { id: 11, sym: 'KRILL-HYD', name: 'Krill Hydrolyzed', origin: 'Antártida / Noruega', category: 'marino', min: 3.20, max: 4.80, unit: '/kg', incoterm: 'FOB', moq: '5 MT', status: 'high', trend: '+3.2', packaging: 'IBCs 1,000L / 200L Drums' },
   { id: 7, sym: 'POULT-ML', name: 'Poultry Meal', origin: 'USA / Brasil', category: 'proteinas', min: 860, max: 920, unit: '/MT', incoterm: 'FOB', moq: '50 MT', status: 'stable', trend: '-1.2', packaging: '25/50kg Bags / Bulk' },
   { id: 8, sym: 'PORK-ML', name: 'Pork Meal', origin: 'USA / Canadá', category: 'proteinas', min: 740, max: 790, unit: '/MT', incoterm: 'FOB', moq: '25 MT', status: 'available', trend: '+0.5', packaging: '25/50kg Bags / Bulk' },
   { id: 9, sym: 'SOY-MEAL', name: 'Soybean Meal', origin: 'Brasil / Argentina', category: 'agricola', min: 400, max: 425, unit: '/MT', incoterm: 'CFR', moq: '50 MT', status: 'stable', trend: '+1.8', packaging: 'Bulk / Big Bags' },
   { id: 10, sym: 'CORN-BULK', name: 'Corn Bulk', origin: 'Brasil / USA', category: 'agricola', min: 190, max: 210, unit: '/MT', incoterm: 'FOB', moq: '100 MT', status: 'available', trend: '-0.9', packaging: 'Bulk' },
-  { id: 11, sym: 'SUGAR-IC45', name: 'Sugar IC45', origin: 'Brasil', category: 'agricola', min: 430, max: 480, unit: '/MT', incoterm: 'FOB', moq: 'Spot: 50 MT · Contract: 12.500 MT', status: 'stable', trend: '+0.3', packaging: 'Big Bags / Bulk' },
-  { id: 12, sym: 'KRILL-HYD', name: 'Krill hydrolysate', origin: 'Noruega / Chile', category: 'marino', min: 2800, max: 4500, unit: '/MT', incoterm: 'FOB', moq: 'Prueba: 1–5 MT · Industrial: 20 MT+', status: 'tight', trend: '+3.2', packaging: '25kg Bags / Big Bags' },
+  { id: 12, sym: 'SUGAR-IC45', name: 'Sugar ICUMSA 45', origin: 'Brasil / India', category: 'agricola', min: 430, max: 480, unit: '/MT', incoterm: 'FOB', moq: '25 MT', status: 'available', trend: '-2.1', packaging: '50kg PP Bags / Bulk' },
 ];
 
+const STATUS_LABELS = { high: 'Alta Demanda', tight: 'Oferta Ajustada', stable: 'Estable', available: 'Disponible' };
 const STATUS_CLASSES = { high: 'status-high', tight: 'status-tight', stable: 'status-stable', available: 'status-available' };
-
-const LANGS = {
-  es: {
-    updated:'Precios actualizados', eyebrow:'Commodities Alimentarios · Global',
-    'hero-title':'Precios<br><em>en línea</em>',
-    'hero-sub':'Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para cotización firme con documentación completa.',
-    'stat-products':'Productos','stat-countries':'Países','stat-volume':'MT / año',
-    'filter-label':'Filtrar:','filter-all':'Todos','filter-oils':'Aceites','filter-marine':'Marino','filter-proteins':'Proteínas','filter-agri':'Agrícola',
-    'contact-title':'¿Necesitas una<br><em>cotización firme?</em>',
-    'contact-desc':'Nuestro equipo de trading responde en menos de 4 horas hábiles con precio firme, documentación técnica y coordinación logística completa.',
-    'contact-response':'Respuesta en < 4 horas hábiles',
-    'form-company':'Empresa *','form-email':'Email *','form-product':'Producto de interés',
-    'form-select':'Seleccionar...','form-volume':'Volumen estimado',
-    'form-message':'Mensaje / Requerimientos','form-submit':'Enviar consulta →',
-    'form-sent':'✓ Mensaje enviado. Te contactamos en menos de 24 horas hábiles.',
-    'form-privacy':'Información confidencial. No compartimos datos con terceros.',
-    'footer-copy':'© 2026 SET Market Terminal. Precios indicativos, sujetos a condiciones de mercado.',
-    'price-label':'Rango de precio indicativo','price-subject':'Sujeto a confirmación',
-    'meta-moq':'MOQ','meta-pack':'Packaging','trend-vs':'vs semana anterior','updated-lbl':'Actualizado:',
-    'last-update':'Última actualización:',
-    status:{ high:'Alta Demanda', tight:'Oferta Ajustada', stable:'Estable', available:'Disponible' },
-    'ph-company':'Nombre de empresa','ph-volume':'Ej: 25 MT',
-    'ph-message':'Origen preferido, destino, incoterm, fecha estimada de entrega...',
-  },
-  en: {
-    updated:'Prices updated', eyebrow:'Food Commodities · Global',
-    'hero-title':'Prices<br><em>online</em>',
-    'hero-sub':'Indicative price ranges updated by our trading desk. Contact us for firm quotations with full documentation.',
-    'stat-products':'Products','stat-countries':'Countries','stat-volume':'MT / year',
-    'filter-label':'Filter:','filter-all':'All','filter-oils':'Oils','filter-marine':'Marine','filter-proteins':'Proteins','filter-agri':'Agricultural',
-    'contact-title':'Need a<br><em>firm quotation?</em>',
-    'contact-desc':'Our trading desk responds within 4 business hours with firm pricing, technical documentation, and full logistics coordination.',
-    'contact-response':'Response in < 4 business hours',
-    'form-company':'Company *','form-email':'Email *','form-product':'Product of interest',
-    'form-select':'Select...','form-volume':'Estimated volume',
-    'form-message':'Message / Requirements','form-submit':'Send inquiry →',
-    'form-sent':'✓ Message sent. We\'ll reach out within 24 business hours.',
-    'form-privacy':'Confidential information. We never share your data.',
-    'footer-copy':'© 2026 SET Market Terminal. Indicative prices, subject to market conditions.',
-    'price-label':'Indicative price range','price-subject':'Subject to confirmation',
-    'meta-moq':'MOQ','meta-pack':'Packaging','trend-vs':'vs prior week','updated-lbl':'Updated:',
-    'last-update':'Last updated:',
-    status:{ high:'High Demand', tight:'Tight Supply', stable:'Stable', available:'Available' },
-    'ph-company':'Company name','ph-volume':'E.g.: 25 MT',
-    'ph-message':'Preferred origin, destination, incoterm, estimated delivery date...',
-  },
-  pt: {
-    updated:'Preços atualizados', eyebrow:'Commodities Alimentares · Global',
-    'hero-title':'Preços<br><em>online</em>',
-    'hero-sub':'Faixas de preço indicativas atualizadas pela nossa mesa de trading. Entre em contato para cotação firme com documentação completa.',
-    'stat-products':'Produtos','stat-countries':'Países','stat-volume':'MT / ano',
-    'filter-label':'Filtrar:','filter-all':'Todos','filter-oils':'Óleos','filter-marine':'Marinho','filter-proteins':'Proteínas','filter-agri':'Agrícola',
-    'contact-title':'Precisa de uma<br><em>cotação firme?</em>',
-    'contact-desc':'Nossa mesa de trading responde em menos de 4 horas úteis com preço firme, documentação técnica e coordenação logística completa.',
-    'contact-response':'Resposta em < 24 horas úteis',
-    'form-company':'Empresa *','form-email':'E-mail *','form-product':'Produto de interesse',
-    'form-select':'Selecionar...','form-volume':'Volume estimado',
-    'form-message':'Mensagem / Requisitos','form-submit':'Enviar consulta →',
-    'form-sent':'✓ Mensagem enviada. Entraremos em contato em menos de 24 horas úteis.',
-    'form-privacy':'Informação confidencial. Não compartilhamos seus dados.',
-    'footer-copy':'© 2026 SET Market Terminal. Preços indicativos, sujeitos às condições de mercado.',
-    'price-label':'Faixa de preço indicativa','price-subject':'Sujeito a confirmação',
-    'meta-moq':'MOQ','meta-pack':'Embalagem','trend-vs':'vs semana anterior','updated-lbl':'Atualizado:',
-    'last-update':'Última atualização:',
-    status:{ high:'Alta Demanda', tight:'Oferta Restrita', stable:'Estável', available:'Disponível' },
-    'ph-company':'Nome da empresa','ph-volume':'Ex.: 25 MT',
-    'ph-message':'Origem preferida, destino, incoterm, data estimada de entrega...',
-  }
-};
-
-let currentLang = 'es';
-
-function t(key) { return LANGS[currentLang][key] || LANGS.es[key] || key; }
-function tStatus(s) { return (LANGS[currentLang].status || LANGS.es.status)[s] || s; }
-
-function applyLang() {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.innerHTML = t(key);
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
-  });
-  document.getElementById('update-date').textContent = getUpdateDate();
-  document.getElementById('footer-date').textContent = t('last-update') + ' ' + getUpdateDate();
-  renderGrid();
-}
-
-function setLang(lang, btn) {
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  applyLang();
-}
 
 function loadProducts() {
   try {
@@ -1049,19 +945,19 @@ function renderGrid() {
             <div class="card-name">${p.name}</div>
             <div class="card-origin">◈ ${p.origin}</div>
           </div>
-          <span class="card-status ${STATUS_CLASSES[p.status]}">${tStatus(p.status)}</span>
+          <span class="card-status ${STATUS_CLASSES[p.status]}">${STATUS_LABELS[p.status]}</span>
         </div>
         <div class="price-block">
-          <div class="price-label">${t('price-label')}</div>
+          <div class="price-label">Rango de precio indicativo</div>
           <div class="price-range">${formatPrice(p.min, p.max, p.unit)} <span class="price-unit">${p.unit}</span></div>
-          <div class="price-incoterm">${p.incoterm} · ${t('price-subject')}</div>
+          <div class="price-incoterm">${p.incoterm} · Sujeto a confirmación</div>
         </div>
         <div class="card-meta">
-          <div class="meta-item"><div class="meta-key">${t('meta-moq')}</div><div class="meta-val" style="font-size:10px">${p.moq}</div></div>
-          <div class="meta-item"><div class="meta-key">${t('meta-pack')}</div><div class="meta-val" style="font-size:10px">${p.packaging}</div></div>
+          <div class="meta-item"><div class="meta-key">MOQ</div><div class="meta-val">${p.moq}</div></div>
+          <div class="meta-item"><div class="meta-key">Packaging</div><div class="meta-val" style="font-size:10px">${p.packaging}</div></div>
         </div>
-        <div class="card-trend ${trendClass}">${trendSign} ${trendAbs}% ${t('trend-vs')}</div>
-        <div class="updated">${t('updated-lbl')} ${getUpdateDate()}</div>
+        <div class="card-trend ${trendClass}">${trendSign} ${trendAbs}% vs semana anterior</div>
+        <div class="updated">Actualizado: ${getUpdateDate()}</div>
       `;
       grid.appendChild(card);
     });
@@ -1191,6 +1087,8 @@ function saveChanges() {
 }
 
 // Init
-applyLang();
+document.getElementById('update-date').textContent = getUpdateDate();
+document.getElementById('footer-date').textContent = `Última actualización: ${getUpdateDate()}`;
+renderGrid();
 </script>
 </html>
