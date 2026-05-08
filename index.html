@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SET Market — Precios en Línea</title>
+<title>SET Market — Market Prices</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -803,7 +803,7 @@
 <div class="contact-section">
   <div class="contact-left">
     <h2 data-i18n="contact-title">¿Necesitas una<br><em>cotización firme?</em></h2>
-    <p data-i18n="contact-desc">Nuestro equipo de trading responde en menos de 4 horas hábiles con precio firme, documentación técnica y coordinación logística completa.</p>
+    <p data-i18n="contact-desc">Nuestro equipo de trading responde en menos de 24 horas hábiles con precio firme, documentación técnica y coordinación logística completa.</p>
     <div class="contact-info">
       <div class="contact-row">
         <div class="contact-icon">✉</div>
@@ -898,15 +898,15 @@ const DEFAULT_PRODUCTS = [
   { id: 1, sym: 'EVOO-CHL', name: 'Extra Virgin Olive Oil', origin: 'Chile', category: 'aceites', min: 3.60, max: 3.95, unit: '/kg', incoterm: 'FOB', moq: '5 MT', status: 'high', trend: '+1.4', packaging: '200L Drums / IBC' },
   { id: 2, sym: 'EVOO-ESP', name: 'Extra Virgin Olive Oil', origin: 'España', category: 'aceites', min: 3.80, max: 4.20, unit: '/kg', incoterm: 'FOB', moq: '10 MT', status: 'tight', trend: '+0.8', packaging: '200L Drums / Flexi' },
   { id: 3, sym: 'OPOM-OIL', name: 'Olive Pomace Oil', origin: 'España / Túnez', category: 'aceites', min: 2.30, max: 2.60, unit: '/kg', incoterm: 'FOB', moq: '20 MT', status: 'stable', trend: '-0.4', packaging: '200L Drums / Flexi' },
-  { id: 4, sym: 'FMEAL-65', name: 'Fishmeal 65% Protein', origin: 'Perú', category: 'marino', min: 1450, max: 1520, unit: '/MT', incoterm: 'CIF', moq: '25 MT', status: 'tight', trend: '-0.6', packaging: '50kg PP Bags / Bulk' },
+  { id: 4, sym: 'FMEAL-65', name: 'Salmon Meal 65% Protein', origin: 'Perú', category: 'marino', min: 1450, max: 1520, unit: '/MT', incoterm: 'CIF', moq: '25 MT', status: 'tight', trend: '-0.6', packaging: '50kg PP Bags / Bulk' },
   { id: 5, sym: 'SALM-OIL', name: 'Salmon Oil', origin: 'Chile / Noruega', category: 'marino', min: 2.05, max: 2.25, unit: '/kg', incoterm: 'FOB', moq: '5 MT', status: 'high', trend: '+2.1', packaging: '200L Drums / IBCs' },
   { id: 6, sym: 'FISH-OM3', name: 'Fish Oil Omega-3', origin: 'Perú / Chile', category: 'marino', min: 1.85, max: 2.05, unit: '/kg', incoterm: 'FOB', moq: '10 MT', status: 'available', trend: '+0.3', packaging: 'IBCs 1,000L / Flexi' },
   { id: 7, sym: 'POULT-ML', name: 'Poultry Meal', origin: 'USA / Brasil', category: 'proteinas', min: 860, max: 920, unit: '/MT', incoterm: 'FOB', moq: '50 MT', status: 'stable', trend: '-1.2', packaging: '25/50kg Bags / Bulk' },
   { id: 8, sym: 'PORK-ML', name: 'Pork Meal', origin: 'USA / Canadá', category: 'proteinas', min: 740, max: 790, unit: '/MT', incoterm: 'FOB', moq: '25 MT', status: 'available', trend: '+0.5', packaging: '25/50kg Bags / Bulk' },
   { id: 9, sym: 'SOY-MEAL', name: 'Soybean Meal', origin: 'Brasil / Argentina', category: 'agricola', min: 400, max: 425, unit: '/MT', incoterm: 'CFR', moq: '50 MT', status: 'stable', trend: '+1.8', packaging: 'Bulk / Big Bags' },
   { id: 10, sym: 'CORN-BULK', name: 'Corn Bulk', origin: 'Brasil / USA', category: 'agricola', min: 190, max: 210, unit: '/MT', incoterm: 'FOB', moq: '100 MT', status: 'available', trend: '-0.9', packaging: 'Bulk' },
-  { id: 11, sym: 'SUGAR-IC45', name: 'Sugar IC45', origin: 'Brasil / India / Tailandia', category: 'agricola', min: 430, max: 480, unit: '/MT', incoterm: 'FOB', moq: 'Spot: 50 MT · Contrato: 12.500 MT', status: 'stable', trend: '+0.3', packaging: 'Big Bags / Bulk' },
-  { id: 12, sym: 'KRILL-HYD', name: 'Krill hydrolysate', origin: 'Noruega / Chile / China', category: 'marino', min: 2800, max: 4500, unit: '/MT', incoterm: 'FOB', moq: 'Prueba: 1–5 MT · Industrial: 20 MT+', status: 'tight', trend: '+3.2', packaging: '25kg Bags / Big Bags' },
+  { id: 11, sym: 'SUGAR-IC45', name: 'Sugar IC45', origin: 'Brasil', category: 'agricola', min: 430, max: 480, unit: '/MT', incoterm: 'FOB', moq: 'Spot: 50 MT · Contract: 12.500 MT', status: 'stable', trend: '+0.3', packaging: 'Big Bags / Bulk' },
+  { id: 12, sym: 'KRILL-HYD', name: 'Krill hydrolysate', origin: 'Noruega / Chile', category: 'marino', min: 2800, max: 4500, unit: '/MT', incoterm: 'FOB', moq: 'Prueba: 1–5 MT · Industrial: 20 MT+', status: 'tight', trend: '+3.2', packaging: '25kg Bags / Big Bags' },
 ];
 
 const STATUS_CLASSES = { high: 'status-high', tight: 'status-tight', stable: 'status-stable', available: 'status-available' };
@@ -924,7 +924,7 @@ const LANGS = {
     'form-company':'Empresa *','form-email':'Email *','form-product':'Producto de interés',
     'form-select':'Seleccionar...','form-volume':'Volumen estimado',
     'form-message':'Mensaje / Requerimientos','form-submit':'Enviar consulta →',
-    'form-sent':'✓ Mensaje enviado. Te contactamos en menos de 4 horas hábiles.',
+    'form-sent':'✓ Mensaje enviado. Te contactamos en menos de 24 horas hábiles.',
     'form-privacy':'Información confidencial. No compartimos datos con terceros.',
     'footer-copy':'© 2026 SET Market Terminal. Precios indicativos, sujetos a condiciones de mercado.',
     'price-label':'Rango de precio indicativo','price-subject':'Sujeto a confirmación',
@@ -946,7 +946,7 @@ const LANGS = {
     'form-company':'Company *','form-email':'Email *','form-product':'Product of interest',
     'form-select':'Select...','form-volume':'Estimated volume',
     'form-message':'Message / Requirements','form-submit':'Send inquiry →',
-    'form-sent':'✓ Message sent. We\'ll reach out within 4 business hours.',
+    'form-sent':'✓ Message sent. We\'ll reach out within 24 business hours.',
     'form-privacy':'Confidential information. We never share your data.',
     'footer-copy':'© 2026 SET Market Terminal. Indicative prices, subject to market conditions.',
     'price-label':'Indicative price range','price-subject':'Subject to confirmation',
@@ -964,11 +964,11 @@ const LANGS = {
     'filter-label':'Filtrar:','filter-all':'Todos','filter-oils':'Óleos','filter-marine':'Marinho','filter-proteins':'Proteínas','filter-agri':'Agrícola',
     'contact-title':'Precisa de uma<br><em>cotação firme?</em>',
     'contact-desc':'Nossa mesa de trading responde em menos de 4 horas úteis com preço firme, documentação técnica e coordenação logística completa.',
-    'contact-response':'Resposta em < 4 horas úteis',
+    'contact-response':'Resposta em < 24 horas úteis',
     'form-company':'Empresa *','form-email':'E-mail *','form-product':'Produto de interesse',
     'form-select':'Selecionar...','form-volume':'Volume estimado',
     'form-message':'Mensagem / Requisitos','form-submit':'Enviar consulta →',
-    'form-sent':'✓ Mensagem enviada. Entraremos em contato em menos de 4 horas úteis.',
+    'form-sent':'✓ Mensagem enviada. Entraremos em contato em menos de 24 horas úteis.',
     'form-privacy':'Informação confidencial. Não compartilhamos seus dados.',
     'footer-copy':'© 2026 SET Market Terminal. Preços indicativos, sujeitos às condições de mercado.',
     'price-label':'Faixa de preço indicativa','price-subject':'Sujeito a confirmação',
