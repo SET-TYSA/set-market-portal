@@ -81,7 +81,6 @@
     50% { opacity: 0.3; }
   }
  
-  /* LANG SWITCHER */
   .lang-switcher {
     display: flex;
     gap: 3px;
@@ -390,7 +389,7 @@
   <div>
     <div class="hero-eyebrow" data-i18n="eyebrow">Commodities Alimentarios · Global</div>
     <h1>SET Price<br><em>Terminal</em></h1>
-    <p class="hero-sub" data-i18n="hero_sub">Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para cotización firme con documentación completa.</p>
+    <p class="hero-sub" data-i18n="hero_sub">Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para una cotización firme con documentación completa.</p>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
@@ -498,7 +497,7 @@
       <p style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:16px;">Demo: <strong style="color:var(--accent)">$et$1729$</strong></p>
     </div>
     <div class="admin-content" id="admin-content">
-      <div class="admin-note" data-i18n="admin_edit_note">Edita los rangos de precio, estado de mercado y tendencia de cada producto.</div>
+      <div class="admin-note" data-i18n="admin_edit_note">Edita los rangos de precio, el estado de mercado y la tendencia de cada producto.</div>
       <div id="admin-fields-list"></div>
       <button class="save-btn" onclick="saveChanges()" data-i18n="admin_save">Guardar y publicar cambios →</button>
       <p class="save-confirm" id="save-confirm" data-i18n="admin_saved">✓ Cambios guardados y publicados.</p>
@@ -515,7 +514,7 @@ const ADMIN_PWD = '$et$1729$';
 const TRANSLATIONS = {
   es: {
     live:'Precios actualizados', eyebrow:'Commodities Alimentarios · Global',
-    hero_sub:'Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para cotización firme con documentación completa.',
+    hero_sub:'Rangos de precio indicativos actualizados por nuestro equipo de trading. Contáctanos para una cotización firme con documentación completa.',
     stat_products:'Productos', stat_countries:'Países', stat_mt:'MT / año',
     filter_label:'Filtrar:', filter_all:'Todos', filter_oils:'Aceites',
     filter_marine:'Marino', filter_proteins:'Proteínas', filter_agri:'Agrícola',
@@ -539,7 +538,7 @@ const TRANSLATIONS = {
     admin_pwd_note:'Ingresa la clave de administrador para editar precios y estados de mercado.',
     admin_pwd_ph:'Clave de acceso...', admin_access:'Acceder →',
     admin_wrong:'Clave incorrecta.',
-    admin_edit_note:'Edita los rangos de precio, estado de mercado y tendencia de cada producto. Los cambios se guardan en este navegador y se reflejan de inmediato en el portal.',
+    admin_edit_note:'Edita los rangos de precio, el estado de mercado y la tendencia de cada producto. Los cambios se guardan en este navegador y se reflejan de inmediato en el portal.',
     admin_save:'Guardar y publicar cambios →', admin_saved:'✓ Cambios guardados y publicados.',
     admin_min:'Precio mín (USD)', admin_max:'Precio máx (USD)',
     admin_trend:'Tendencia (%)', admin_status:'Estado', admin_moq:'MOQ', admin_incoterm:'Incoterm',
@@ -579,7 +578,7 @@ const TRANSLATIONS = {
   },
   pt: {
     live:'Preços atualizados', eyebrow:'Commodities Alimentares · Global',
-    hero_sub:'Faixas de preço indicativas atualizadas pela nossa equipe de trading. Entre em contato para cotação firme com documentação completa.',
+    hero_sub:'Faixas de preço indicativas atualizadas pela nossa equipe de trading. Entre em contato para uma cotação firme com documentação completa.',
     stat_products:'Produtos', stat_countries:'Países', stat_mt:'MT / ano',
     filter_label:'Filtrar:', filter_all:'Todos', filter_oils:'Óleos',
     filter_marine:'Marinho', filter_proteins:'Proteínas', filter_agri:'Agrícola',
@@ -603,7 +602,7 @@ const TRANSLATIONS = {
     admin_pwd_note:'Insira a senha de administrador para editar preços e status de mercado.',
     admin_pwd_ph:'Chave de acesso...', admin_access:'Acessar →',
     admin_wrong:'Senha incorreta.',
-    admin_edit_note:'Edite os intervalos de preço, status de mercado e tendência de cada produto. As alterações são salvas neste navegador e refletidas imediatamente.',
+    admin_edit_note:'Edite os intervalos de preço, o status de mercado e a tendência de cada produto. As alterações são salvas neste navegador e refletidas imediatamente.',
     admin_save:'Salvar e publicar alterações →', admin_saved:'✓ Alterações salvas e publicadas.',
     admin_min:'Preço mín (USD)', admin_max:'Preço máx (USD)',
     admin_trend:'Tendência (%)', admin_status:'Status', admin_moq:'MOQ', admin_incoterm:'Incoterm',
@@ -623,7 +622,6 @@ function applyTranslations() {
     const v = t(el.getAttribute('data-i18n'));
     if (v) el.innerHTML = v;
   });
-  // Placeholders
   const phMap = {
     'inp-company': 'form_company_ph',
     'inp-volume':  'form_volume_ph',
@@ -650,23 +648,32 @@ function setLang(lang) {
  
 /* ============================================================
    PRODUCTS
+   — 5 reemplazos con precios de mercado reales (mayo 2026):
+     Olive Pomace Oil   → Sunflower Oil       (FOB Ucrania/Argentina ~1,650–1,780 USD/MT)
+     Poultry Meal       → Soybean Oil         (FOB Brasil/Argentina  ~1,350–1,450 USD/MT)
+     Pork Meal          → Rapeseed Oil        (FOB Europa/Canadá     ~1,270–1,380 USD/MT)
+     Soybean Meal       → Oats               (FOB Canadá/Australia  ~195–230 USD/MT)
+     Corn Bulk          → Urea 46%           (FOB Middle East/USGC  ~620–720 USD/MT)
    ============================================================ */
 const DEFAULT_PRODUCTS = [
-  { id:1,  sym:'EVOO-CHL',   name:'Extra Virgin Olive Oil',  origin:'Chile',               category:'aceites',   min:3.60,  max:3.95,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+1.4', packaging:'200L Drums / IBC' },
-  { id:2,  sym:'EVOO-ESP',   name:'Extra Virgin Olive Oil',  origin:'España',              category:'aceites',   min:3.80,  max:4.20,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'tight',     trend:'+0.8', packaging:'200L Drums / Flexi' },
-  { id:3,  sym:'OPOM-OIL',   name:'Olive Pomace Oil',        origin:'España / Túnez',      category:'aceites',   min:2.30,  max:2.60,  unit:'/kg', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'-0.4', packaging:'200L Drums / Flexi' },
-  { id:4,  sym:'SMEAL-65',   name:'Salmon Meal 65% Protein', origin:'Chile / Noruega',     category:'marino',    min:1580,  max:1680,  unit:'/MT', incoterm:'CIF', moq:'25 MT',  status:'tight',     trend:'+1.8', packaging:'50kg PP Bags / Bulk' },
-  { id:5,  sym:'SALM-OIL',   name:'Salmon Oil',              origin:'Chile / Noruega',     category:'marino',    min:2.05,  max:2.25,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+2.1', packaging:'200L Drums / IBCs' },
-  { id:6,  sym:'FISH-OM3',   name:'Fish Oil Omega-3',        origin:'Perú / Chile',        category:'marino',    min:1.85,  max:2.05,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'available', trend:'+0.3', packaging:'IBCs 1,000L / Flexi' },
-  { id:11, sym:'KRILL-HYD',  name:'Krill Hydrolyzed',        origin:'Antártida / Noruega', category:'marino',    min:3.20,  max:4.80,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+3.2', packaging:'IBCs 1,000L / 200L Drums' },
-  { id:7,  sym:'POULT-ML',   name:'Poultry Meal',            origin:'USA / Brasil',        category:'proteinas', min:860,   max:920,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'stable',    trend:'-1.2', packaging:'25/50kg Bags / Bulk' },
-  { id:8,  sym:'PORK-ML',    name:'Pork Meal',               origin:'USA / Canadá',        category:'proteinas', min:740,   max:790,   unit:'/MT', incoterm:'FOB', moq:'25 MT',  status:'available', trend:'+0.5', packaging:'25/50kg Bags / Bulk' },
-  { id:9,  sym:'SOY-MEAL',   name:'Soybean Meal',            origin:'Brasil / Argentina',  category:'agricola',  min:400,   max:425,   unit:'/MT', incoterm:'CFR', moq:'50 MT',  status:'stable',    trend:'+1.8', packaging:'Bulk / Big Bags' },
-  { id:10, sym:'CORN-BULK',  name:'Corn Bulk',               origin:'Brasil / USA',        category:'agricola',  min:190,   max:210,   unit:'/MT', incoterm:'FOB', moq:'100 MT', status:'available', trend:'-0.9', packaging:'Bulk' },
-  { id:12, sym:'SUGAR-IC45', name:'Sugar ICUMSA 45',         origin:'Brasil / India',      category:'agricola',  min:430,   max:480,   unit:'/MT', incoterm:'FOB', moq:'25 MT',  status:'available', trend:'-2.1', packaging:'50kg PP Bags / Bulk' },
+  // ── ACEITES ──────────────────────────────────────────────────────────────
+  { id:1,  sym:'EVOO-CHL',  name:'Extra Virgin Olive Oil',  origin:'Chile',               category:'aceites',   min:3.60,  max:3.95,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+1.4', packaging:'200L Drums / IBC' },
+  { id:2,  sym:'EVOO-ESP',  name:'Extra Virgin Olive Oil',  origin:'Spain',               category:'aceites',   min:3.80,  max:4.20,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'tight',     trend:'+0.8', packaging:'200L Drums / Flexi' },
+  { id:3,  sym:'SUNF-OIL',  name:'Sunflower Oil',           origin:'Ukraine / Argentina', category:'aceites',   min:1650,  max:1780,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'+2.3', packaging:'200L Drums / Flexi / IBC' },
+  { id:13, sym:'SOY-OIL',   name:'Soybean Oil',             origin:'Brazil / Argentina',  category:'aceites',   min:1350,  max:1450,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'+1.5', packaging:'200L Drums / Flexi / IBC' },
+  { id:14, sym:'RAPS-OIL',  name:'Rapeseed Oil',            origin:'Europe / Canada',     category:'aceites',   min:1270,  max:1380,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'available', trend:'-0.6', packaging:'200L Drums / Flexi' },
+  // ── MARINE ───────────────────────────────────────────────────────────────
+  { id:4,  sym:'SMEAL-65',  name:'Salmon Meal 65% Protein', origin:'Chile / Norway',      category:'marino',    min:1580,  max:1680,  unit:'/MT', incoterm:'CIF', moq:'25 MT',  status:'tight',     trend:'+1.8', packaging:'50kg PP Bags / Bulk' },
+  { id:5,  sym:'SALM-OIL',  name:'Salmon Oil',              origin:'Chile / Norway',      category:'marino',    min:2.05,  max:2.25,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+2.1', packaging:'200L Drums / IBC' },
+  { id:6,  sym:'FISH-OM3',  name:'Fish Oil Omega-3',        origin:'Peru / Chile',        category:'marino',    min:1.85,  max:2.05,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'available', trend:'+0.3', packaging:'1,000L IBC / Flexi' },
+  { id:11, sym:'KRILL-HYD', name:'Krill Hydrolyzed',        origin:'Antarctica / Norway', category:'marino',    min:3.20,  max:4.80,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+3.2', packaging:'1,000L IBC / 200L Drums' },
+  // ── AGRICULTURE ──────────────────────────────────────────────────────────
+  { id:15, sym:'OAT-BULK',  name:'Oats Bulk',               origin:'Canada / Australia',  category:'agricola',  min:195,   max:230,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'available', trend:'-1.1', packaging:'Bulk / Big Bags' },
+  { id:12, sym:'SUGAR-IC45',name:'Sugar ICUMSA 45',         origin:'Brazil / India',      category:'agricola',  min:430,   max:480,   unit:'/MT', incoterm:'FOB', moq:'25 MT',  status:'available', trend:'-2.1', packaging:'50kg PP Bags / Bulk' },
+  { id:16, sym:'UREA-46',   name:'Urea 46% Granular',       origin:'Middle East / USGC',  category:'agricola',  min:620,   max:720,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'tight',     trend:'+6.7', packaging:'50kg Bags / Big Bags / Bulk' },
 ];
  
-const STATUS_KEYS   = { high:'status_high', tight:'status_tight', stable:'status_stable', available:'status_available' };
+const STATUS_KEYS    = { high:'status_high', tight:'status_tight', stable:'status_stable', available:'status_available' };
 const STATUS_CLASSES = { high:'status-high', tight:'status-tight', stable:'status-stable', available:'status-available' };
  
 function loadProducts() {
@@ -690,7 +697,7 @@ function renderGrid() {
   if (!visible.length) { empty.style.display = 'block'; return; }
   empty.style.display = 'none';
   visible.forEach(p => {
-    const tval  = parseFloat(p.trend);
+    const tval   = parseFloat(p.trend);
     const tClass = tval >= 0 ? 'trend-up' : 'trend-down';
     const tSign  = tval >= 0 ? '▲' : '▼';
     const tAbs   = Math.abs(tval).toFixed(1);
@@ -835,3 +842,4 @@ renderGrid();
 renderContactSelect();
 </script>
 </html>
+ 
