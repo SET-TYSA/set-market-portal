@@ -648,29 +648,23 @@ function setLang(lang) {
  
 /* ============================================================
    PRODUCTS
-   — 5 reemplazos con precios de mercado reales (mayo 2026):
-     Olive Pomace Oil   → Sunflower Oil       (FOB Ucrania/Argentina ~1,650–1,780 USD/MT)
-     Poultry Meal       → Soybean Oil         (FOB Brasil/Argentina  ~1,350–1,450 USD/MT)
-     Pork Meal          → Rapeseed Oil        (FOB Europa/Canadá     ~1,270–1,380 USD/MT)
-     Soybean Meal       → Oats               (FOB Canadá/Australia  ~195–230 USD/MT)
-     Corn Bulk          → Urea 46%           (FOB Middle East/USGC  ~620–720 USD/MT)
    ============================================================ */
 const DEFAULT_PRODUCTS = [
   // ── ACEITES ──────────────────────────────────────────────────────────────
-  { id:1,  sym:'EVOO-CHL',  name:'Extra Virgin Olive Oil',  origin:'Chile',               category:'aceites',   min:3.60,  max:3.95,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+1.4', packaging:'200L Drums / IBC' },
-  { id:2,  sym:'EVOO-ESP',  name:'Extra Virgin Olive Oil',  origin:'Spain',               category:'aceites',   min:3.80,  max:4.20,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'tight',     trend:'+0.8', packaging:'200L Drums / Flexi' },
-  { id:3,  sym:'SUNF-OIL',  name:'Sunflower Oil',           origin:'Ukraine / Argentina', category:'aceites',   min:1650,  max:1780,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'+2.3', packaging:'200L Drums / Flexi / IBC' },
-  { id:13, sym:'SOY-OIL',   name:'Soybean Oil',             origin:'Brazil / Argentina',  category:'aceites',   min:1350,  max:1450,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'+1.5', packaging:'200L Drums / Flexi / IBC' },
-  { id:14, sym:'RAPS-OIL',  name:'Rapeseed Oil',            origin:'Europe / Canada',     category:'aceites',   min:1270,  max:1380,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'available', trend:'-0.6', packaging:'200L Drums / Flexi' },
+  { id:1,  sym:'EVOO-CHL',  name:'Extra Virgin Olive Oil',    origin:'Chile',               category:'aceites',   min:3.60,  max:3.95,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+1.4', packaging:'200L Drums / IBC' },
+  { id:2,  sym:'EVOO-ESP',  name:'Extra Virgin Olive Oil',    origin:'Spain',               category:'aceites',   min:3.80,  max:4.20,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'tight',     trend:'+0.8', packaging:'200L Drums / Flexi' },
+  { id:3,  sym:'SUNF-OIL',  name:'Sunflower Oil',             origin:'Ukraine / Argentina', category:'aceites',   min:1650,  max:1780,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'+2.3', packaging:'200L Drums / Flexi / IBC' },
+  { id:13, sym:'SOY-OIL',   name:'Soybean Oil',               origin:'Brazil / Argentina',  category:'aceites',   min:1350,  max:1450,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'stable',    trend:'+1.5', packaging:'200L Drums / Flexi / IBC' },
+  { id:14, sym:'RAPS-OIL',  name:'Rapeseed Oil',              origin:'Europe / Canada',     category:'aceites',   min:1270,  max:1380,  unit:'/MT', incoterm:'FOB', moq:'20 MT',  status:'available', trend:'-0.6', packaging:'200L Drums / Flexi' },
+  { id:6,  sym:'AVO-EVOO',  name:'Avocado Oil Extra Virgin',  origin:'',                    category:'aceites',   min:4.20,  max:5.50,  unit:'/kg', incoterm:'EXW / FOB', moq:'5 MT',   status:'available', trend:'+1.8', packaging:'200L Drums / IBC' },
   // ── MARINE ───────────────────────────────────────────────────────────────
-  { id:4,  sym:'SMEAL-65',  name:'Salmon Meal 65% Protein', origin:'Chile / Norway',      category:'marino',    min:1580,  max:1680,  unit:'/MT', incoterm:'CIF', moq:'25 MT',  status:'tight',     trend:'+1.8', packaging:'50kg PP Bags / Bulk' },
-  { id:5,  sym:'SALM-OIL',  name:'Salmon Oil',              origin:'Chile / Norway',      category:'marino',    min:2.05,  max:2.25,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+2.1', packaging:'200L Drums / IBC' },
-  { id:6,  sym:'FISH-OM3',  name:'Fish Oil Omega-3',        origin:'Peru / Chile',        category:'marino',    min:1.85,  max:2.05,  unit:'/kg', incoterm:'FOB', moq:'10 MT',  status:'available', trend:'+0.3', packaging:'1,000L IBC / Flexi' },
-  { id:11, sym:'KRILL-HYD', name:'Krill Hydrolyzed',        origin:'Antarctica / Norway', category:'marino',    min:3.20,  max:4.80,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+3.2', packaging:'1,000L IBC / 200L Drums' },
+  { id:4,  sym:'SMEAL-65',  name:'Salmon Meal 65% Protein',   origin:'Chile / Norway',      category:'marino',    min:1580,  max:1680,  unit:'/MT', incoterm:'CIF', moq:'25 MT',  status:'tight',     trend:'+1.8', packaging:'50kg PP Bags / Bulk' },
+  { id:5,  sym:'SALM-OIL',  name:'Salmon Oil',                origin:'Chile / Norway',      category:'marino',    min:2.05,  max:2.25,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+2.1', packaging:'200L Drums / IBC' },
+  { id:11, sym:'KRILL-HYD', name:'Krill Hydrolyzed',          origin:'Antarctica / Norway', category:'marino',    min:3.20,  max:4.80,  unit:'/kg', incoterm:'FOB', moq:'5 MT',   status:'high',      trend:'+3.2', packaging:'1,000L IBC / 200L Drums' },
   // ── AGRICULTURE ──────────────────────────────────────────────────────────
-  { id:15, sym:'OAT-BULK',  name:'Oats Bulk',               origin:'Canada / Australia',  category:'agricola',  min:195,   max:230,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'available', trend:'-1.1', packaging:'Bulk / Big Bags' },
-  { id:12, sym:'SUGAR-IC45',name:'Sugar ICUMSA 45',         origin:'Brazil / India',      category:'agricola',  min:430,   max:480,   unit:'/MT', incoterm:'FOB', moq:'25 MT',  status:'available', trend:'-2.1', packaging:'50kg PP Bags / Bulk' },
-  { id:16, sym:'UREA-46',   name:'Urea 46% Granular',       origin:'Middle East / USGC',  category:'agricola',  min:620,   max:720,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'tight',     trend:'+6.7', packaging:'50kg Bags / Big Bags / Bulk' },
+  { id:15, sym:'OAT-BULK',  name:'Oats Bulk',                 origin:'Canada / Australia',  category:'agricola',  min:195,   max:230,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'available', trend:'-1.1', packaging:'Bulk / Big Bags' },
+  { id:12, sym:'SUGAR-IC45',name:'Sugar ICUMSA 45',           origin:'Brazil / India',      category:'agricola',  min:430,   max:480,   unit:'/MT', incoterm:'FOB', moq:'25 MT',  status:'available', trend:'-2.1', packaging:'50kg PP Bags / Bulk' },
+  { id:16, sym:'UREA-46',   name:'Urea 46% Granular',         origin:'Middle East / USGC',  category:'agricola',  min:620,   max:720,   unit:'/MT', incoterm:'FOB', moq:'50 MT',  status:'tight',     trend:'+6.7', packaging:'50kg Bags / Big Bags / Bulk' },
 ];
  
 const STATUS_KEYS    = { high:'status_high', tight:'status_tight', stable:'status_stable', available:'status_available' };
@@ -709,7 +703,7 @@ function renderGrid() {
         <div>
           <div class="card-sym">${p.sym}</div>
           <div class="card-name">${p.name}</div>
-          <div class="card-origin">◈ ${p.origin}</div>
+          ${p.origin ? `<div class="card-origin">◈ ${p.origin}</div>` : ''}
         </div>
         <span class="card-status ${STATUS_CLASSES[p.status]}">${t(STATUS_KEYS[p.status])}</span>
       </div>
@@ -743,7 +737,7 @@ function renderTicker() {
 function renderContactSelect() {
   const sel = document.getElementById('contact-product');
   sel.innerHTML = `<option value="">${t('form_select')}</option>` +
-    products.map(p => `<option value="${p.sym}">${p.name} (${p.origin})</option>`).join('');
+    products.map(p => `<option value="${p.sym}">${p.name}</option>`).join('');
 }
  
 function filterCards(cat, btn) {
@@ -790,7 +784,7 @@ function buildAdminFields() {
     const div = document.createElement('div');
     div.className = 'admin-product-item';
     div.innerHTML = `
-      <div class="admin-product-name">${p.sym} — ${p.name} (${p.origin})</div>
+      <div class="admin-product-name">${p.sym} — ${p.name}</div>
       <div class="admin-fields">
         <div class="admin-field"><label>${t('admin_min')}</label><input type="number" step="0.01" value="${p.min}" id="admin-min-${i}"></div>
         <div class="admin-field"><label>${t('admin_max')}</label><input type="number" step="0.01" value="${p.max}" id="admin-max-${i}"></div>
@@ -808,7 +802,7 @@ function buildAdminFields() {
         <div class="admin-field">
           <label>${t('admin_incoterm')}</label>
           <select id="admin-inco-${i}">
-            ${['FOB','CIF','CFR','EXW','DAP','DDP'].map(term=>`<option value="${term}" ${p.incoterm===term?'selected':''}>${term}</option>`).join('')}
+            ${['FOB','CIF','CFR','EXW','DAP','DDP','EXW / FOB'].map(term=>`<option value="${term}" ${p.incoterm===term?'selected':''}>${term}</option>`).join('')}
           </select>
         </div>
       </div>`;
@@ -842,4 +836,3 @@ renderGrid();
 renderContactSelect();
 </script>
 </html>
- 
